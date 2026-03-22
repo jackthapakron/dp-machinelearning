@@ -33,12 +33,12 @@ with st.sidebar:
   body_mass_g = st.slider('Body mass (g)', 2700.0,6300.0,4207.0)
   # Create a DataFrame for the input features
 
-  data = ('island':island,
+  data = {'island':island,
           'bill_length_mm':bill_length_mm,
           'bill_depth_mm':bill_depth_mm,
           'flipper_length_mm':flipper_length_mm,
           'body_mass_g':body_mass_g,
-          'gender':gender)
+          'gender':gender}
   input_df = pd.DataFrame(data, index=[0])
   input_penguins = pd.concat([input_df, X], axis=0)
 
