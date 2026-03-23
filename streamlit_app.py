@@ -70,24 +70,38 @@ with st.expander('Data Preparation'):
 
 # Model training and inference
 ## Train the ML model
+# clf = RandomForestClassifier()
+# clf.fit(X, y)
+
+# ## Apply  model to make prediction
+# prediction = clf.predict(input_row)
+# prediction_proba = clf.predict_proba(input_row)
+
+# df_prediction_proba = pd.DataFrame(prediction_proba)
+# df_prediction_proba.columns = ['Adelie','Chinstrap','Gentoo']
+# df_prediction_proba = df_prediction_proba.rename(columns={0: 'Adelie',
+#                                     1: 'Chinstrap',
+#                                     2: 'Gentoo'})
+
 clf = RandomForestClassifier()
 clf.fit(X, y)
 
-## Apply  model to make prediction
+# Apply model to make predictions
 prediction = clf.predict(input_row)
 prediction_proba = clf.predict_proba(input_row)
 
-df_prediction_proba = pd.DataFrame(prediction_proba)
-df_prediction_proba.columns = ['Adelie','Chinstrap','Gentoo']
-df_prediction_proba = df_prediction_proba.rename(columns={0: 'Adelie',
-                                    1: 'Chinstrap',
-                                    2: 'Gentoo'})
+# สร้าง DataFrame พร้อมตั้งชื่อคอลัมน์ตั้งแต่แรก
+df_prediction_proba = pd.DataFrame(
+    prediction_proba,
+    columns=['Adelie', 'Chinstrap', 'Gentoo']
+)
 
+df_prediction_proba
 st.subheader('Predicted Species')
 penguins_species = np.array(['Adelie', 'Chinstrap', 'Gentoo'])
 st.success(str(penguins_species[prediction][0]))
-st/ewew
-#df_prediction_proba
+
+
 
 
 
